@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { Header } from './components/Header/Header'
+import { Main } from './components/Main/Main'
 
 
 function App() {
 
   return (
     <>
-      <h1>ciao</h1>
+      <Header />
+      <Main />
     </>
   )
 }
