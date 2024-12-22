@@ -1,5 +1,14 @@
-import { Coins } from "../Coins/Coins";
-import { Display } from "../Display/Display";
+import { Coins } from "../Coins/Coins"
+import { Display } from "../Display/Display"
+
+// FUNZIONE PER CREARE I NUMERI DEI COIN
+// creo array di 90 indici, con callback (_ elemento corrente dell'array, vuoto perchè sono nuovi valori), 
+// i + 1 perchè gli indici partono da 0
+const arrayDifferentIntNumFromOneToNinety = () => {
+    const numbers = Array.from({ length: 90 }, (_, i) => i + 1)
+    return numbers
+}
+// console.log(arrayDifferentIntNumFromOneToNinety())
 
 export function Main() {
     return (
@@ -9,12 +18,13 @@ export function Main() {
                     {/* Colonna principale per i numeri */}
                     <div className="col-10">
                         <div className="row row-cols-10 g-3">
-                            {/* Generazione dinamica di 90 "Coins" */}
-                            {Array.from({ length: 90 }, (_, index) => (
-                                <div key={index} className="col">
-                                    <Coins />
-                                </div>
-                            ))}
+                            {
+                                arrayDifferentIntNumFromOneToNinety().map(num =>
+                                    <div key={num} className="col">
+                                        <Coins numbers={num} />
+                                    </div>
+                                )
+                            }
                         </div>
                     </div>
 
@@ -29,3 +39,13 @@ export function Main() {
         </main>
     );
 }
+
+// let numbers = []
+
+// const generateDifferentIntNumFromOneToNinety = () => {
+//     const generatedNum = Math.floor(Math.random((max * min) - min) + 1)
+//     if (!numbers.includes(generatedNum)) {
+//         numbers.push(generatedNum)
+//     }
+// }
+// console.log(numbers)
