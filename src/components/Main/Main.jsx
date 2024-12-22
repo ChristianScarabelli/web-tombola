@@ -1,4 +1,5 @@
 import { Coins, arrayDifferentIntNumFromOneToNinety } from "../Coins/Coins"
+import { EndGame } from "../Commands/EndGame";
 import { GenerateNum } from "../Commands/GenerateNum";
 import { Display } from "../Display/Display"
 import { useState, useEffect } from "react";
@@ -36,7 +37,7 @@ export function Main() {
                     <div className="col-4 d-flex flex-column align-items-center">
                         <Display numbers={numbers} />
                         <GenerateNum setNumbers={setNumbers} />
-                        <button className="btn btn-danger mt-2">Termina Gioco</button>
+                        <EndGame />
                     </div>
                 </div>
             </div>
