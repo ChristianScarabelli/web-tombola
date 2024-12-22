@@ -1,12 +1,10 @@
 import { Coins, arrayDifferentIntNumFromOneToNinety } from "../Coins/Coins"
-import { EndGame } from "../Commands/EndGame";
-import { GenerateNum } from "../Commands/GenerateNum";
 import { Display } from "../Display/Display"
 import { useState, useEffect } from "react";
 
 export function Main() {
 
-    // variabile di stato per i numeri generati
+    // Stato per i numeri del display 
     const [numbers, setNumbers] = useState([])
 
     // variabile di stato per i numeri dei coin
@@ -35,9 +33,7 @@ export function Main() {
 
                     {/* Colonna per il display */}
                     <div className="col-4 d-flex flex-column align-items-center">
-                        <Display numbers={numbers} />
-                        <GenerateNum setNumbers={setNumbers} />
-                        <EndGame />
+                        <Display numbers={numbers} setNumbers={setNumbers} />
                     </div>
                 </div>
             </div>
