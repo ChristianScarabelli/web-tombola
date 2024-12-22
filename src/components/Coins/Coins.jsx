@@ -1,3 +1,13 @@
+// FUNZIONE PER CREARE I NUMERI DEI COIN
+// creo array di 90 indici, con callback (_ elemento corrente dell'array, vuoto perchè sono nuovi valori), 
+// i + 1 perchè gli indici partono da 0
+export const arrayDifferentIntNumFromOneToNinety = () => {
+    const numbers = Array.from({ length: 90 }, (_, i) => i + 1)
+    return numbers
+}
+// console.log(arrayDifferentIntNumFromOneToNinety())
+
+
 export function Coins({ numbers }) {
     return (
         <section className="position-relative">

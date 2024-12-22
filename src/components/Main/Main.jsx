@@ -1,25 +1,29 @@
-import { Coins } from "../Coins/Coins"
+import { Coins, arrayDifferentIntNumFromOneToNinety } from "../Coins/Coins"
+import { GenerateNum } from "../Commands/GenerateNum";
 import { Display } from "../Display/Display"
-
-// FUNZIONE PER CREARE I NUMERI DEI COIN
-// creo array di 90 indici, con callback (_ elemento corrente dell'array, vuoto perchè sono nuovi valori), 
-// i + 1 perchè gli indici partono da 0
-const arrayDifferentIntNumFromOneToNinety = () => {
-    const numbers = Array.from({ length: 90 }, (_, i) => i + 1)
-    return numbers
-}
-// console.log(arrayDifferentIntNumFromOneToNinety())
+import { useState, useEffect } from "react";
 
 export function Main() {
+
+    // variabile di stato per i numeri generati
+    const [numbers, setNumbers] = useState([])
+
+    // variabile di stato per i numeri dei coin
+    const [initialNumbers, setInitialNumbers] = useState([])
+
+    // creo i numeri dei coin solo al primo render della pagina
+    useEffect(() => {
+        setInitialNumbers(arrayDifferentIntNumFromOneToNinety())
+    }, [])
     return (
         <main className="py-3">
             <div className="container">
                 <div className="row">
                     {/* Colonna principale per i numeri */}
-                    <div className="col-10">
+                    <div className="col-8">
                         <div className="row row-cols-10 g-3">
                             {
-                                arrayDifferentIntNumFromOneToNinety().map(num =>
+                                initialNumbers.map(num =>
                                     <div key={num} className="col">
                                         <Coins numbers={num} />
                                     </div>
@@ -29,9 +33,9 @@ export function Main() {
                     </div>
 
                     {/* Colonna per il display */}
-                    <div className="col-2 d-flex flex-column align-items-center">
-                        <Display />
-                        <button className="btn btn-warning mt-3">Estrai</button>
+                    <div className="col-4 d-flex flex-column align-items-center">
+                        <Display numbers={numbers} />
+                        <GenerateNum setNumbers={setNumbers} />
                         <button className="btn btn-danger mt-2">Termina Gioco</button>
                     </div>
                 </div>
@@ -39,13 +43,3 @@ export function Main() {
         </main>
     );
 }
-
-// let numbers = []
-
-// const generateDifferentIntNumFromOneToNinety = () => {
-//     const generatedNum = Math.floor(Math.random((max * min) - min) + 1)
-//     if (!numbers.includes(generatedNum)) {
-//         numbers.push(generatedNum)
-//     }
-// }
-// console.log(numbers)
