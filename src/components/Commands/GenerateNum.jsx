@@ -1,31 +1,11 @@
-const extractDifferentIntNumFromOneToNinety = () => {
-    // array per i numeri generati
-    const extractedNum = []
-    const min = 1
-    const max = 90
+import { useContext } from "react"
+import { GameContext } from "../../contexts/GameContext"
 
-    // genero numeri fino a quando l'array ha 15 numeri
-    while (extractedNum.length < 15) {
-        const generatedNum = Math.floor(Math.random() * (max - min + 1)) + min
+export function GenerateNum() {
 
-        // Controllo e pusho il numero generato
-        // solo se non è già presente nell'array
-        if (!extractedNum.includes(generatedNum)) {
-            extractedNum.push(generatedNum)
-        }
-    }
-    return extractedNum
-}
-
-export function GenerateNum({ setNumbers }) {
-
-    // funzione per gestire il click invocando la funzione e settando i numeri
-    const handleCLick = () => {
-        const numbers = extractDifferentIntNumFromOneToNinety()
-        setNumbers(numbers)
-    }
+    const { extractNumber } = useContext(GameContext)
 
     return (
-        <button onClick={handleCLick} className="btn btn-warning mt-3">Estrai</button>
+        <button onClick={extractNumber} className="btn btn-warning mt-3">Estrai</button>
     )
 }

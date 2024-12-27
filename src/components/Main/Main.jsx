@@ -1,19 +1,12 @@
-import { Coins, arrayDifferentIntNumFromOneToNinety } from "../Coins/Coins"
+import { Coins } from "../Coins/Coins"
 import { Display } from "../Display/Display"
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { GameContext } from "../../contexts/GameContext";
 
 export function Main() {
 
-    // Stato per i numeri del display 
-    const [numbers, setNumbers] = useState([])
+    const { coinsNumbers } = useContext(GameContext)
 
-    // variabile di stato per i numeri dei coin
-    const [initialNumbers, setInitialNumbers] = useState([])
-
-    // creo i numeri dei coin solo al primo render della pagina
-    useEffect(() => {
-        setInitialNumbers(arrayDifferentIntNumFromOneToNinety())
-    }, [])
     return (
         <main className="py-3">
             <div className="container">
@@ -22,9 +15,10 @@ export function Main() {
                     <div className="col-8">
                         <div className="row row-cols-10 g-3">
                             {
-                                initialNumbers.map(num =>
+                                coinsNumbers.map(num =>
+                                    // uso i numeri come key perchè sono tutti diversi
                                     <div key={num} className="col">
-                                        <Coins numbers={num} />
+                                        <Coins number={num} />
                                     </div>
                                 )
                             }
@@ -33,10 +27,10 @@ export function Main() {
 
                     {/* Colonna per il display */}
                     <div className="col-4 d-flex flex-column align-items-center">
-                        <Display numbers={numbers} setNumbers={setNumbers} />
+                        <Display />
                     </div>
                 </div>
             </div>
         </main>
-    );
+    )
 }
