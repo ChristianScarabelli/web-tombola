@@ -3,9 +3,9 @@ import { GameContext } from "../../contexts/GameContext"
 
 export function EndGame() {
 
-    const { resetGame } = useContext(GameContext)
+    const { resetGame, canResetGame } = useContext(GameContext)
 
     return (
-        <button onClick={resetGame} className="btn btn-danger mt-2">Termina Gioco</button>
+        <button onClick={resetGame} disabled={!canResetGame} className="btn btn-danger mt-2">Termina Gioco</button>
     )
 }

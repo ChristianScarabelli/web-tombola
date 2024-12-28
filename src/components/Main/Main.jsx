@@ -13,7 +13,7 @@ export function Main() {
                 <div className="row">
                     {/* Colonna principale per i numeri */}
                     <div className="col-8">
-                        <div className="row row-cols-10 g-3">
+                        <div className="row row-cols-5 g-4">
                             {
                                 coinsNumbers.map(num =>
                                     // uso i numeri come key perchè sono tutti diversi
