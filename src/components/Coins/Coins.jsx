@@ -1,9 +1,8 @@
-import { useContext } from "react"
-import { GameContext } from "../../contexts/GameContext"
+import { useContext } from "react";
+import { GameContext } from "../../contexts/GameContext";
 
 export function Coins({ number }) {
-
-    const { isNumberExtracted } = useContext(GameContext)
+    const { isNumberExtracted } = useContext(GameContext);
 
     return isNumberExtracted(number) ? (
         <section className="position-relative">
@@ -19,6 +18,5 @@ export function Coins({ number }) {
                 {number}
             </span>
         </section>
-    )
+    );
 }
-

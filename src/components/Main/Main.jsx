@@ -4,8 +4,7 @@ import { useContext } from "react";
 import { GameContext } from "../../contexts/GameContext";
 
 export function Main() {
-
-    const { coinsNumbers } = useContext(GameContext)
+    const { coinsNumbers } = useContext(GameContext);
 
     return (
         <main className="py-3">
@@ -14,14 +13,18 @@ export function Main() {
                     {/* Colonna principale per i numeri */}
                     <div className="col-8">
                         <div className="row row-cols-5 g-4">
-                            {
-                                coinsNumbers.map(num =>
-                                    // uso i numeri come key perchè sono tutti diversi
-                                    <div key={num} className="col">
-                                        <Coins number={num} />
+                            {/* Mappa i numeri in 3 righe, ognuna con 5 numeri */}
+                            {coinsNumbers.map((row, rowIndex) => (
+                                <div key={rowIndex} className="col-12">
+                                    <div className="row">
+                                        {row.map((num) => (
+                                            <div key={num} className="col-2">
+                                                <Coins number={num} />
+                                            </div>
+                                        ))}
                                     </div>
-                                )
-                            }
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -32,5 +35,5 @@ export function Main() {
                 </div>
             </div>
         </main>
-    )
+    );
 }
